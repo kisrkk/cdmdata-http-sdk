@@ -1,4 +1,4 @@
-# cdmdata-http-sdk
+<img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/45b8e571-c3bb-4e42-ae1d-837df3d323a2" /># cdmdata-http-sdk
 
 ตัวอย่างการเรียกใช้ CDM Data API ในแต่ละภาษา ทุกตัวอย่างใช้แค่ standard library / built-in ของแต่ละภาษา
 **ไม่มี 3rd-party dependency ให้ต้องติดตั้ง**
@@ -9,6 +9,8 @@ Repo นี้ครอบคลุม API 2 รุ่น ที่เป็น�
 |---|---|---|---|---|
 | ปัจจุบัน | [`dbs5/`](./dbs5) | `dbs5.cplservice.com` | `device_id` | [`dbs5/cdmdata-public-api.md`](./dbs5/cdmdata-public-api.md) |
 | Legacy | [`dbs7/`](./dbs7) | `dbs7.cplservice.com` | `cust_id` | [`(legacy)cdmdata-public-api.md`](../(legacy)cdmdata-public-api.md) |
+![รุ่นปัจจุบัน](https://cplservice.com/sale/creative_power_profile_product/assets/products/universal/gateway_product.webp)
+![รุ่น Legacy]([https://cplservice.com/sale/creative_power_profile_product/assets/products/universal/gateway_product.webp](https://bsg-i.nbxc.com/product/5c/4e/ab/5258e0809aab7d0f82f85d859a.jpg@4e_500w_500h.src%7C95Q.webp))
 
 AK/SK ของสองระบบนี้**ไม่ใช่ key ตัวเดียวกัน** ต้องขอแยกกันจากผู้ดูแลระบบของแต่ละระบบ
 
