@@ -1,0 +1,347 @@
+{
+  "info": {
+    "_postman_id": "fa0367a9-ed63-410d-baaf-5f4c41e0164b",
+    "name": "External API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "6561402",
+    "_collection_link": "https://go.postman.co/collection/6561402-fa0367a9-ed63-410d-baaf-5f4c41e0164b?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "CDM Data API",
+      "item": [
+        {
+          "name": "On-Off Command",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "x-api-access-key",
+                "value": "{{ak}}",
+                "disabled": false
+              },
+              {
+                "key": "x-api-secret-key",
+                "value": "{{sk}}",
+                "disabled": false
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"device_id\": \"\",\n  \"meter_id\": \"01\",\n  \"command\": \"on\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/cdmdata/v1/on-off-command",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "cdmdata",
+                "v1",
+                "on-off-command"
+              ]
+            },
+            "description": "Generated from cURL: curl -X POST \"{{base_url}}/cdmdata/v1/on-off-command\" -H \"x-api-access-key: {{ak}}\" -H \"x-api-secret-key: {{sk}}\" -H \"Content-Type: application/json\" -d '{\"device_id\":\"\",\"meter_id\":\"01\",\"command\":\"on\"}'"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Data Daily",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-api-access-key",
+                "value": "{{ak}}",
+                "disabled": false
+              },
+              {
+                "key": "x-api-secret-key",
+                "value": "{{sk}}",
+                "disabled": false
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/cdmdata/v1/getdatadaily?device_id=0001518264&page=1&limit=100&transform=1&from_time=&to_time=&order=-date&column=date,data&format=csv",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "cdmdata",
+                "v1",
+                "getdatadaily"
+              ],
+              "query": [
+                {
+                  "key": "device_id",
+                  "value": "0001518264"
+                },
+                {
+                  "key": "page",
+                  "value": "1",
+                  "description": "skip data = limit ใช้กับ limit เสมอ"
+                },
+                {
+                  "key": "limit",
+                  "value": "100",
+                  "description": "limit"
+                },
+                {
+                  "key": "transform",
+                  "value": "1",
+                  "description": "NEST / JSON"
+                },
+                {
+                  "key": "from_time",
+                  "value": "",
+                  "description": "จากวันที่"
+                },
+                {
+                  "key": "to_time",
+                  "value": "",
+                  "description": "ถึงวันที่"
+                },
+                {
+                  "key": "order",
+                  "value": "-date",
+                  "description": "date คือ ASC  -date คือ DESC"
+                },
+                {
+                  "key": "column",
+                  "value": "date,data",
+                  "description": "เหลือ column ที่ต้องการ"
+                },
+                {
+                  "key": "format",
+                  "value": "csv",
+                  "description": "download เป็น csv"
+                },
+                {
+                  "key": "filter",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "from",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "to",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Generated from cURL: curl -X GET \"{{base_url}}/cdmdata/v1/getdatadaily?device_id=&from_time=&to_time=&from=&to=&page=1&limit=100&order=&column=&transform=1&format=csv&filter=\" -H \"x-api-access-key: {{ak}}\" -H \"x-api-secret-key: {{sk}}\""
+          },
+          "response": []
+        },
+        {
+          "name": "Get Data Hourly",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-api-access-key",
+                "value": "{{ak}}",
+                "disabled": false
+              },
+              {
+                "key": "x-api-secret-key",
+                "value": "{{sk}}",
+                "disabled": false
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/cdmdata/v1/getdatahourly?device_id=0001518264&from_time=&to_time=&from=&to=&page=1&limit=100&order=&column=&transform=1&filter=",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "cdmdata",
+                "v1",
+                "getdatahourly"
+              ],
+              "query": [
+                {
+                  "key": "device_id",
+                  "value": "0001518264"
+                },
+                {
+                  "key": "from_time",
+                  "value": ""
+                },
+                {
+                  "key": "to_time",
+                  "value": ""
+                },
+                {
+                  "key": "from",
+                  "value": ""
+                },
+                {
+                  "key": "to",
+                  "value": ""
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "key": "order",
+                  "value": ""
+                },
+                {
+                  "key": "column",
+                  "value": ""
+                },
+                {
+                  "key": "transform",
+                  "value": "1"
+                },
+                {
+                  "key": "format",
+                  "value": "csv",
+                  "disabled": true
+                },
+                {
+                  "key": "filter",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Generated from cURL: curl -X GET \"{{base_url}}/cdmdata/v1/getdatahourly?device_id=&from_time=&to_time=&from=&to=&page=1&limit=100&order=&column=&transform=1&format=csv&filter=\" -H \"x-api-access-key: {{ak}}\" -H \"x-api-secret-key: {{sk}}\""
+          },
+          "response": []
+        },
+        {
+          "name": "Get Data",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-api-access-key",
+                "value": "{{ak}}",
+                "disabled": false
+              },
+              {
+                "key": "x-api-secret-key",
+                "value": "{{sk}}",
+                "disabled": false
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/cdmdata/v1/getdata?device_id=0010536632&from_time=&to_time=&from=&to=&page=1&limit=4000&order=&column=&transform=1&filter=",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "cdmdata",
+                "v1",
+                "getdata"
+              ],
+              "query": [
+                {
+                  "key": "device_id",
+                  "value": "0010536632"
+                },
+                {
+                  "key": "from_time",
+                  "value": ""
+                },
+                {
+                  "key": "to_time",
+                  "value": ""
+                },
+                {
+                  "key": "from",
+                  "value": ""
+                },
+                {
+                  "key": "to",
+                  "value": ""
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "4000"
+                },
+                {
+                  "key": "order",
+                  "value": ""
+                },
+                {
+                  "key": "column",
+                  "value": ""
+                },
+                {
+                  "key": "transform",
+                  "value": "1"
+                },
+                {
+                  "key": "format",
+                  "value": "csv",
+                  "disabled": true
+                },
+                {
+                  "key": "filter",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Generated from cURL: curl -X GET \"{{base_url}}/cdmdata/v1/getdata?device_id=&from_time=&to_time=&from=&to=&page=1&limit=100&order=&column=&transform=1&format=csv&filter=\" -H \"x-api-access-key: {{ak}}\" -H \"x-api-secret-key: {{sk}}\""
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": ""
+    }
+  ]
+}
