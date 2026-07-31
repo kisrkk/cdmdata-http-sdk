@@ -218,7 +218,7 @@ Response header:
 - IP และ user-agent
 - timestamp
 
-Web master สามารถดู usage ผ่าน Internal endpoint:
+ผู้ดูแลระบบดู usage ผ่าน endpoint:
 
 ```http
 GET /cdmdata/v1/api-keys/:id/usage

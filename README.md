@@ -7,8 +7,8 @@ Repo นี้ครอบคลุม API 2 รุ่น ที่เป็น�
 
 | รุ่น | โฟลเดอร์ | Host | Query key | เอกสาร |
 |---|---|---|---|---|
-| ปัจจุบัน | [`dbs5/`](./dbs5) | `dbs5.cplservice.com` | `device_id` | [`dbs5/cdmdata-public-api.md`](./dbs5/cdmdata-public-api.md) |
-| Legacy | [`dbs7/`](./dbs7) | `dbs7.cplservice.com` | `cust_id` | [`(legacy)cdmdata-public-api.md`](../(legacy)cdmdata-public-api.md) |
+| ปัจจุบัน | [`dbs5/`](./dbs5) | `dbs5.cplservice.com` | `device_id` | [`dbs5/README.md`](./dbs5/README.md) |
+| Legacy | [`dbs7/`](./dbs7) | `dbs7.cplservice.com` | `cust_id` | [`dbs7/README.md`](./dbs7/README.md) |
 | ปัจจุบัน -> |![รุ่นปัจจุบัน](https://cplservice.com/sale/creative_power_profile_product/assets/products/universal/gateway_product.webp)| Legacy -> |<img width="250" height="160" alt="รุ่น Legacy" src="https://github.com/user-attachments/assets/45b8e571-c3bb-4e42-ae1d-837df3d323a2" />| ดูรุ่นที่ผลิตภัณฑ์ |
 
  
@@ -67,7 +67,7 @@ AK/SK ของสองระบบนี้**ไม่ใช่ key ตัว�
 | ไม่ส่ง `cust_id` | `cust_id is required` |
 | `cust_id` ไม่อยู่ใน `allowed_devices` ของ key | `This cust_id is not allowed for this API key` |
 
-⚠️ **Gotcha ที่เจอจริงระหว่างเทส:** Cloudflare หน้า origin จะบล็อก request ที่ใช้ User-Agent
+⚠️ **ข้อควรระวัง:** Cloudflare หน้า origin จะบล็อก request ที่ใช้ User-Agent
 เริ่มต้นของ `urllib` (`Python-urllib/x.y`) ว่าเป็น bot แล้วตอบกลับเป็น plain text (`error code: 1010`)
 แทนที่จะเป็น JSON — Python client ใน repo นี้ตั้ง `User-Agent: cdmdata-http-sdk-python/1.0` ให้เองแล้วเพื่อเลี่ยงปัญหานี้
 ถ้าเขียน client เองด้วย `urllib`/เครื่องมืออื่นที่ไม่ได้ตั้ง UA ให้ระวังจุดนี้ไว้ด้วย
@@ -75,8 +75,8 @@ AK/SK ของสองระบบนี้**ไม่ใช่ key ตัว�
 ## ข้อควรระวังอื่นๆ
 
 - **อย่าฝัง secret key ไว้ใน client-side JS ของเว็บ public** (ดูคำเตือนใน `html-js/README.md` ของแต่ละรุ่น) —
-  ตัวอย่าง browser เหมาะกับ internal tool/demo เท่านั้น
-- endpoint `GET /cdmdata/v1/api-keys/:id/usage` เป็น internal endpoint สำหรับ web master ไม่ได้ใช้ AK/SK
+  ตัวอย่าง browser เหมาะกับงานฝั่งผู้ดูแลระบบ/demo เท่านั้น
+- endpoint `GET /cdmdata/v1/api-keys/:id/usage` เป็น endpoint สำหรับผู้ดูแลระบบ ไม่ได้ใช้ AK/SK
   แบบเดียวกับ endpoint อื่น จึงไม่รวมอยู่ใน SDK ตัวอย่างนี้
 - `dbs5/*` รองรับ query parameter เพิ่มเติมที่ `dbs7/*` ไม่มี: `transform`, `column`, `format`, `download`
   (ดูรายละเอียดในเอกสารของแต่ละรุ่น) — ทุก client รับ extra params/kwargs เพิ่มได้ตามชื่อ field ตรงๆ อยู่แล้ว

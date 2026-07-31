@@ -1,7 +1,7 @@
-# CDM Data API - Public Version (Legacy / etrix-server-aws-ts)
+# CDM Data API - Public Version (Legacy)
 
 เอกสารสำหรับ user หรือระบบภายนอกที่ได้รับ `AK/SK` แล้ว เพื่ออ่านข้อมูลไฟฟ้า/น้ำ และสั่ง on-off มิเตอร์รุ่น remote-cutoff
-จากระบบ legacy นี้ (ขอ AK/SK ได้จาก Web master ผ่าน [cdmdata-internal-api.md](./cdmdata-internal-api.md))
+จากระบบ legacy นี้ (ขอ AK/SK ได้จากผู้ดูแลระบบ)
 
 `{{base_url}} = https://dbs7.cplservice.com`
 
@@ -28,9 +28,9 @@ x-api-secret-key: SK...
 
 ## Endpoints
 
-ระบบนี้แยกน้ำออกจากไฟฟ้าอย่างชัดเจน แต่ละ endpoint ผูกกับ Prisma model ตัวเดียว:
+ระบบนี้แยกน้ำออกจากไฟฟ้าอย่างชัดเจน แต่ละ endpoint ผูกกับ collection เดียว (ค่าตรงกับ `collection_name` ใน JSON response):
 
-| Method | Path                        | Prisma Model    | ความหมาย                                  |
+| Method | Path                        | Collection    | ความหมาย                                  |
 | ------ | --------------------------- | ---------------- | ------------------------------------------ |
 | GET    | `/cdmdata/v1/getdata`              | `electric`       | kWh Raw Data                               |
 | GET    | `/cdmdata/v1/electric1hour`        | `electric1hour`  | kWh Data รายชั่วโมง                        |
@@ -228,13 +228,11 @@ Data endpoints (ไฟฟ้า/น้ำ):
 - IP และ user-agent
 - timestamp (`occurred_at`)
 
-Web master ดู usage ผ่าน Internal endpoint:
+ผู้ดูแลระบบดู usage ผ่าน endpoint:
 
 ```http
 GET /cdmdata/v1/api-keys/:id/usage
 ```
-
-รายละเอียดดูที่ [cdmdata-internal-api.md](./cdmdata-internal-api.md)
 
 ## Tooling (SDK / MCP)
 
