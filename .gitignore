@@ -1,0 +1,10 @@
+# Python
+__pycache__/
+*.pyc
+
+# Node.js
+node_modules/
+
+# .NET
+csharp/bin/
+csharp/obj/

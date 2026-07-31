@@ -1,0 +1,14 @@
+{
+  "name": "cdmdata-nodejs-example",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CDM Data API example client (no dependencies, uses built-in fetch)",
+  "main": "cdmdata-client.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node example.js",
+    "selfcheck": "node cdmdata-client.js"
+  }
+}
