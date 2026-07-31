@@ -6,5 +6,7 @@ __pycache__/
 node_modules/
 
 # .NET
-csharp/bin/
-csharp/obj/
+dbs5/csharp/bin/
+dbs5/csharp/obj/
+dbs7/csharp/bin/
+dbs7/csharp/obj/

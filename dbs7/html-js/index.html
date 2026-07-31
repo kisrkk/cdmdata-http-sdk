@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8" />
+<title>CDM Data API (legacy / dbs7) - Browser Example</title>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 640px; margin: 2rem auto; padding: 0 1rem; }
+  form { display: grid; gap: 0.5rem; margin-bottom: 1rem; }
+  input { padding: 0.4rem; }
+  pre { background: #f4f4f4; padding: 1rem; overflow: auto; }
+  .warn { background: #fff3cd; border: 1px solid #ffe69c; padding: 0.75rem; border-radius: 4px; }
+</style>
+</head>
+<body>
+<h1>CDM Data API (legacy / dbs7) demo (browser fetch)</h1>
+
+<p class="warn">
+  ⚠️ หน้านี้ใช้สาธิต/เครื่องมือ internal เท่านั้น ห้ามฝัง AK/SK ไว้ใน JS ของเว็บ public เด็ดขาด
+  เพราะใครก็เปิด DevTools อ่าน secret key ได้ทันที เว็บ public ควรมี backend proxy เก็บ AK/SK แทน<br />
+  หมายเหตุ: request ตรงจาก browser จะสำเร็จได้ก็ต่อเมื่อฝั่ง server เปิด CORS ให้ origin นี้
+</p>
+
+<form id="form">
+  <input id="accessKey" placeholder="AK..." required />
+  <input id="secretKey" placeholder="SK..." required />
+  <input id="custId" placeholder="cust_id" value="270000005" required />
+  <button type="submit">Get latest daily data (ไฟฟ้า)</button>
+</form>
+
+<pre id="output">(ผลลัพธ์จะแสดงตรงนี้)</pre>
+
+<script>
+'use strict';
+
+const BASE_URL = 'https://dbs7.cplservice.com';
+
+async function getDataDaily(accessKey, secretKey, custId, params = {}) {
+  const url = new URL(BASE_URL + '/cdmdata/v1/getdatadaily');
+  url.searchParams.set('cust_id', custId);
+  for (const [k, v] of Object.entries(params)) url.searchParams.set(k, v);
+
+  const res = await fetch(url, {
+    headers: {
+      'x-api-access-key': accessKey,
+      'x-api-secret-key': secretKey,
+    },
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.message || `HTTP ${res.status}`);
+  return data;
+}
+
+document.getElementById('form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const accessKey = document.getElementById('accessKey').value;
+  const secretKey = document.getElementById('secretKey').value;
+  const custId = document.getElementById('custId').value;
+  const output = document.getElementById('output');
+  output.textContent = 'Loading...';
+  try {
+    const data = await getDataDaily(accessKey, secretKey, custId, { limit: 1 });
+    output.textContent = JSON.stringify(data, null, 2);
+  } catch (err) {
+    output.textContent = 'Error: ' + err.message;
+  }
+});
+</script>
+</body>
+</html>
